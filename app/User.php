@@ -28,6 +28,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    function projects()
+    {
+        return $this->hasMany(Project::class, 'owner_id');
+    }
+
     /**
      * The attributes that should be cast to native types.
      *
