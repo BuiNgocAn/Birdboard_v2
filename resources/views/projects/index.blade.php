@@ -1,21 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="flex items-center mb-3">
-        <h1 class="mr-auto">Birdboard</h1>
-        <a href="/projects/create">New Project</a>
-    </div>
+    <header class="flex items-center mb-3">
+        <div class="flex justify-between items-center w-full">
+            <h3 class="text-grey text-sm font-normal">My Projects</h3>
+            <a href="/projects/create   ">New Project</a>
+        </div>
+    </header>
 
-    <div class="flex">
+    <main class="lg:flex lg:flex-wrap -mx-3">
         @forelse ($projects as $project)
-            <div class="bg-white mr-4 p-5 rounded shadow w-1/3" style="height: 200px">
-                <h3 class="font-normal text-xl py-4">{{ $project->title }}</h3>
-
-                <div class="text-grey">{{ Str::limit($project->description, 100) }}</div>
+            <div class="lg:w-1/3 px-3 pb-6">
+                @include ('projects.card')
             </div>
         @empty
             <div>No Project yet.</div>
         @endforelse
-    </div>
+    </main>
 @endsection
 
