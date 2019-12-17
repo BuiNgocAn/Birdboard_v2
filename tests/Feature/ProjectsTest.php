@@ -9,6 +9,7 @@ use Tests\TestCase;
 class ProjectsTest extends TestCase
 {
     use WithFaker, RefreshDatabase;
+
     /** @test */
     public function a_user_can_create_a_project()
     {
@@ -20,6 +21,17 @@ class ProjectsTest extends TestCase
         $this->post('/projects', $attributes)->assertRedirect('projects');
         $this->assertDatabaseHas('projects', $attributes);
         $this->get('/projects')->assertSee($attributes['title']);
+    }
+
+    /** @test */
+    public function a_user_can_view_a_project()
+    {
+        $this->withoutExceptionHandling();
+        $project = factory('App\Project')->create();
+        // $this->get('/projects/' . $project->id)
+        $this->get($project->path())
+            ->assertSee($project->title)
+            ->assertSee($project->description);
     }
 
     /** @test */
