@@ -2,48 +2,62 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-
-
 use App\Project;
 
 class ProjectsController extends Controller
 {
+    /**
+     * View all projects.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $projects = auth()->user()->projects;
+
         return view('projects.index', compact('projects'));
     }
 
+    /**
+     * Show a single project.
+     *
+     * @param \App\Project $project
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function show(Project $project)
     {
         if (auth()->user()->isNot($project->owner)) {
             abort(403);
         }
+
         return view('projects.show', compact('project'));
     }
 
+    /**
+     * Create a new project.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         return view('projects.create');
     }
 
+    /**
+     * Persist a new project.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store()
     {
-        // validate
         $attributes = request()->validate([
             'title' => 'required',
-            'description' => 'required',
-            // 'owner_id' => 'required'
+            'description' => 'required'
         ]);
-        // $attributes['owner_id'] = auth()->id();
 
-        // persist
-        // Project::create($attributes);
-        auth()->user()->projects()->create($attributes);
+        $project = auth()->user()->projects()->create($attributes);
 
-        // redirect
-        return redirect('/projects');
+        return redirect($project->path());
     }
 }

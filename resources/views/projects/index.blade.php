@@ -1,10 +1,11 @@
-@extends('layouts.app')
+@extends ('layouts.app')
 
 @section('content')
-    <header class="flex items-center mb-3">
-        <div class="flex justify-between items-center w-full">
-            <h3 class="text-grey text-sm font-normal">My Projects</h3>
-            <a href="/projects/create   ">New Project</a>
+    <header class="flex items-center mb-3 py-4">
+        <div class="flex justify-between items-end w-full">
+            <h2 class="text-grey text-sm font-normal">My Projects</h2>
+
+            <a href="/projects/create" class="button">New Project</a>
         </div>
     </header>
 
@@ -14,8 +15,7 @@
                 @include ('projects.card')
             </div>
         @empty
-            <div>No Project yet.</div>
+            <div>No projects yet.</div>
         @endforelse
     </main>
 @endsection
-
