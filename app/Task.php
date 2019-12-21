@@ -21,6 +21,38 @@ class Task extends Model
     protected $touches = ['project'];
 
     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'completed' => 'boolean'
+    ];
+
+    /**
+     * Mark the task as complete.
+     */
+    public function complete()
+    {
+        $this->update(['completed' => true]);
+
+        $this->recordActivity('completed_task');
+    }
+
+    /**
+     * Mark the task as incomplete.
+     */
+    public function incomplete()
+    {
+        $this->update(['completed' => false]);
+
+        $this->recordActivity('incompleted_task');
+    }
+
+
+
+
+    /**
      * Get the owning project.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -38,5 +70,29 @@ class Task extends Model
     public function path()
     {
         return "/projects/{$this->project->id}/tasks/{$this->id}";
+    }
+
+
+    /**
+     * Record activity for a project.
+     *
+     * @param string $description
+     */
+    public function recordActivity($description)
+    {
+        $this->activity()->create([
+            'project_id' => $this->project_id,
+            'description' => $description
+        ]);
+    }
+
+    /**
+     * The activity feed for the project.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function activity()
+    {
+        return $this->morphMany(Activity::class, 'subject')->latest();
     }
 }
