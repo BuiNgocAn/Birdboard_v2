@@ -48,8 +48,8 @@
         </div>
 
         <div class="field mb-6">
-            <div class="col-md-8 offset-md-4">
-                <button type="submit" class="button mr-2">
+            <div class="">
+                <button type="submit" class="bg-blue text-white no-underline rounded-full text-sm py-2 px-5">
                     Login
                 </button>
 

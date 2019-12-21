@@ -61,7 +61,7 @@
 
         <div class="field">
             <div class="control">
-                <button type="submit" class="button is-link mr-2">Register</button>
+                <button type="submit" class="bg-blue text-white no-underline rounded-full text-sm py-2 px-5 is-link mr-2">Register</button>
             </div>
         </div>
     </form>

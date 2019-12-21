@@ -7,7 +7,7 @@
                 <a href="/projects" class="text-grey text-sm font-normal no-underline hover:underline">My Projects</a>
                 / {{ $project->title }}
 
-            <a href="/projects/create" class="button">New Project</a>
+                <a href="{{ $project->path().'/edit' }}" class="bg-blue text-white no-underline rounded-full text-sm py-2 px-5">Edit Project</a>
         </div>
     </header>
 
@@ -58,6 +58,8 @@
 
                         <button type="submit" class="button">Save</button>
                     </form>
+
+                    @include ('errors')
                 </div>
             </div>
 
