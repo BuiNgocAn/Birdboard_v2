@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
+    use RecordsActivity;
+
     /**
      * Attributes to guard against mass assignment.
      *
@@ -28,6 +30,13 @@ class Task extends Model
     protected $casts = [
         'completed' => 'boolean'
     ];
+
+    /**
+     * Model events that should trigger new activity.
+     *
+     * @var array
+     */
+    protected static $recordableEvents = ['created', 'deleted'];
 
     /**
      * Mark the task as complete.
