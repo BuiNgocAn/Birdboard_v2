@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\helpers;
 
 class ProjectsController extends Controller
 {

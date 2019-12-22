@@ -53,11 +53,11 @@
                                 aria-expanded="false"
                                 v-pre
                             >
-                                <img width="50"
+                                <img width="35"
                                      class="rounded-full"
-                                     src="https://www.gravatar.com/avatar/{{ md5(auth()->user()->email) }}?s=200">
-                                </a>
+                                     src="{{ gravatar_url(auth()->user()->email) }}">
 
+                                {{ auth()->user()->name }}
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item"
                                        href="{{ route('logout') }}"
