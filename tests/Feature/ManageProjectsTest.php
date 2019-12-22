@@ -74,7 +74,7 @@ class ManageProjectsTest extends TestCase
 
         $this->assertDatabaseMissing('projects', $project->only('id'));
     }
-    
+
     /** @test */
     function a_user_can_update_a_project()
     {

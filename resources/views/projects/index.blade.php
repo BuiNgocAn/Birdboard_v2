@@ -5,7 +5,7 @@
         <div class="flex justify-between items-end w-full">
             <h2 class="text-grey text-sm font-normal">My Projects</h2>
 
-            <a href="/projects/create" class="bg-blue text-white no-underline rounded-full text-sm py-2 px-5">New Project</a>
+            <a href="/projects/create" class="bg-blue text-white no-underline rounded-full text-sm py-2 px-4">New Project</a>
         </div>
     </header>
 

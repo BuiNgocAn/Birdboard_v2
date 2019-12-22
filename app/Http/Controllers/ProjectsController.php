@@ -96,7 +96,7 @@ class ProjectsController extends Controller
 
         return redirect('/projects');
     }
-
+    
     /**
      * Validate the request attributes.
      *

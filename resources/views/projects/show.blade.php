@@ -7,7 +7,7 @@
                 <a href="/projects" class="text-grey text-sm font-normal no-underline hover:underline">My Projects</a>
                 / {{ $project->title }} </p>
 
-            <a href="{{ $project->path().'/edit' }}" class="bg-blue text-white no-underline rounded text-sm py-1 px-3">Edit Project</a>
+            <a href="{{ $project->path().'/edit' }}" class="bg-blue text-white no-underline rounded-full text-sm py-1 px-3">Edit Project</a>
         </div>
     </header>
 
@@ -56,7 +56,7 @@
                             placeholder="Anything special that you want to make a note of?"
                         >{{ $project->notes }}</textarea>
 
-                        <button type="submit" class="button">Save</button>
+                        <button type="submit" class="bg-blue text-white no-underline rounded-full text-sm py-2 px-3">Save</button>
                     </form>
 
                     @include ('errors')
