@@ -13,7 +13,7 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        $projects = auth()->user()->projects;
+        $projects = auth()->user()->accessibleProjects();
 
         return view('projects.index', compact('projects'));
     }
@@ -96,7 +96,7 @@ class ProjectsController extends Controller
 
         return redirect('/projects');
     }
-    
+
     /**
      * Validate the request attributes.
      *
